@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: solola-backend
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_PATH
+        value: solola.db
+      - key: ADMIN_CODE
+        sync: false

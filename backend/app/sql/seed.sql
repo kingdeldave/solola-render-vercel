@@ -1,0 +1,2 @@
+-- Données initiales facultatives pour Solola.
+-- Le prototype n'impose pas de seed afin de garder les comptes créés par OTP.

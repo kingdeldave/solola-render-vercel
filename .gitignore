@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+*.db
+*.db-shm
+*.db-wal
+uploads/
+
+# Flutter / Dart
+.dart_tool/
+build/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Vercel
+.vercel/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

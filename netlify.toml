@@ -1,0 +1,18 @@
+[build]
+  base = "frontend_flutter"
+  command = "rm -rf flutter && git clone https://github.com/flutter/flutter.git -b stable --depth 1 && ./flutter/bin/flutter config --enable-web && ./flutter/bin/flutter pub get && ./flutter/bin/flutter build web --release --dart-define=API_BASE_URL=$API_BASE_URL --dart-define=FIREBASE_AUTH_ENABLED=$FIREBASE_AUTH_ENABLED --dart-define=FIREBASE_API_KEY=$FIREBASE_API_KEY --dart-define=FIREBASE_AUTH_DOMAIN=$FIREBASE_AUTH_DOMAIN --dart-define=FIREBASE_PROJECT_ID=$FIREBASE_PROJECT_ID --dart-define=FIREBASE_STORAGE_BUCKET=$FIREBASE_STORAGE_BUCKET --dart-define=FIREBASE_MESSAGING_SENDER_ID=$FIREBASE_MESSAGING_SENDER_ID --dart-define=FIREBASE_APP_ID=$FIREBASE_APP_ID"
+  publish = "build/web"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; connect-src 'self' https://solola-backend.onrender.com wss://solola-backend.onrender.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; frame-ancestors 'none';"
